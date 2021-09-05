@@ -15,37 +15,35 @@ typedef struct NO lista;
 int buscaElem(lista *L, int elem, lista **pre){
     lista *aux, *preL;
     aux = L;
-    preL= NULL;
-    while ((aux != NULL) && (elem > aux->info)) {
+    preL = NULL;
+    while ((aux != NULL) && (elem > aux->info)){
         preL = aux;
         aux = aux->prox;
     }
     (*pre) = preL;
-    if ((aux != NULL) && (elem == aux->info))
-        return 1;
+    if ((aux != NULL) && (elem == aux->info)) return 1;
     return 0;
 }
 
-lista *insereElem(lista *L, int elem) {
+lista *insereElem(lista *L, int elem){
     lista *pre, *el;
-    if (!buscaElem(L,elem,&pre)) {
+    if (!buscaElem(L, elem, &pre)){
         el = (lista *)malloc(sizeof(lista));
         el->info = elem;
-        if (L == NULL || pre == NULL) {
+        if(L == NULL || pre == NULL){
             el->prox = L;
             L = el;
         } else {
             el->prox = pre->prox;
             pre->prox = el;
         }
-    } else
-        printf("  Erro: Elemento já existe\n");
+    } else printf("  Erro: Elemento já existe\n");
     return L;
 }
 
-lista *removeElem(lista *L, int elem) {
+lista *removeElem(lista *L, int elem){
     lista *pre, *lixo;
-    if (buscaElem(L,elem,&pre)) {
+    if (buscaElem(L, elem, &pre)) {
         if (L->info == elem) {
             lixo = L;
             L = L->prox;
@@ -54,22 +52,21 @@ lista *removeElem(lista *L, int elem) {
             pre->prox = lixo->prox;
         }
         free(lixo);
-    } else
-        printf("\nElemento %d não existe\n", elem);
+    } else printf("  Erro: Elemento %d não existe\n", elem);
     return L;
 }
 
-void imprimeLista(lista *L) {
+void imprimeLista(lista *L){
     lista *aux;
     aux = L;
-    while (aux != NULL) {
+    while(aux != NULL){
         printf(" -> %d", aux->info);
         aux = aux->prox;
     }
     printf("\n");
 }
 
-int main(void) {
+int main(void){
     lista *L;
     int num;
     L = NULL;
