@@ -9,8 +9,8 @@ typedef struct NO lista;
 
 int buscaElem(lista *L, int elem, lista **pre){
     lista *aux, *preL;
-    aux = L->prox;   // mudança aqui
-    preL = L;        // mudança aqui
+    aux = L->prox;
+    preL = L;
     while ((aux != NULL) && (elem > aux->info)){
         preL = aux;
         aux = aux->prox;
@@ -25,8 +25,7 @@ lista *insereElem(lista *L, int elem){
     if (!buscaElem(L, elem, &pre)){
         el = (lista *)malloc(sizeof(lista));
         el->info = elem;
-        el->prox = pre->prox;  // mudança aqui // Não é necessário testar se o nó 
-        // a ser removido é o primeiro da lista, pois agora sempre existe o nó cabeça
+        el->prox = pre->prox;
         pre->prox = el;
     } else printf("  Erro: Elemento já existe\n");
     return L;
@@ -36,7 +35,7 @@ lista *removeElem(lista *L, int elem){
     lista *pre, *lixo;
     if (buscaElem(L, elem, &pre)) {
         lixo = pre->prox;
-        pre->prox = lixo->prox;  // mudança aqui
+        pre->prox = lixo->prox;
         free(lixo);
     } else printf("  Erro: Elemento %d não existe\n", elem);
     return L;
