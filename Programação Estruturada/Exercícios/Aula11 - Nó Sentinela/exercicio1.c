@@ -105,10 +105,10 @@ int main(){
                 printf("Quantidade de Nós: %d\n", quantidadeNO(L->prox));
                 break;
             case 5:
-                printf("\nFim do programa.\n");
+                printf("Fim do programa.\n");
                 break;
             default:
-                printf("\nErro\n");
+                printf("Erro: Operação inválida.\n");
         }
     } while(op != 5);
 
