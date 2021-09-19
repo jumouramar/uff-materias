@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define uTemp 20
+
 struct NO{
     int num; 
     int tempo;
@@ -46,8 +48,8 @@ void executaProcessos(fila *inicio, fila *final){
         inicio = removeElem(inicio);
         printf("\nExecutando processo #%d - %dut", num, temp);
 
-        if(temp > 20)
-            insereElem(&inicio, &final, num, temp-20);
+        if(temp > uTemp)
+            insereElem(&inicio, &final, num, temp-uTemp);
         
     }
     printf("\n\nProcessos encerrados.\n");
