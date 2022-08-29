@@ -21,7 +21,7 @@ public class Ex1 {
         n = teclado.nextInt();
         
         for(int i = 0; i<n; i++){
-            System.out.print("Escreva um valor:");
+            System.out.print("Escreva um valor: ");
             valor = teclado.nextInt();
             if(valor<0){
                 negativo++;
