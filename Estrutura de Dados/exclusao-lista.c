@@ -7,11 +7,23 @@ typedef struct lista {
     struct lista* prox;
 } TLista;
 
-void altera(TLista* li, int vantigo, int vnovo) {
+TLista* exclui(TLista* li, int valor) {
     TLista* aux = li;
+    TLista* ant = li;
     while(aux != NULL){
-        if(aux->info == vantigo)
-            aux->info = vnovo;
+        if(aux->info == valor){
+            if(aux == li){
+                li = li->prox;
+                aux = aux->prox;
+            }
+            else if(aux->prox == NULL){
+                ant->prox = NULL;
+            }
+            else{
+                ant->prox = aux->prox;
+            }
+        }
+        if(ant != aux) ant = ant->prox;
         aux = aux->prox;
     }
     return li;
@@ -51,7 +63,6 @@ int main (void) {
     char delimitador[] = "-";
     char *ptr;
     int valor;
-    int valor_antigo, valor_novo;
 
 
     /* lê valores para criar a lista
@@ -66,9 +77,8 @@ int main (void) {
         ptr = strtok(NULL, delimitador);
     }
 
-    //Le dados da alteracao a ser realizada
-    scanf("%d", &valor_antigo);
-    scanf("%d", &valor_novo);
-    altera(lista, valor_antigo, valor_novo);
+    //Le dados da exclusão a ser realizada
+    scanf("%d", &valor);
+    lista = exclui(lista, valor);
     imprime_lista(lista);
 }
