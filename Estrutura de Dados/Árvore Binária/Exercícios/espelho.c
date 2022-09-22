@@ -1,3 +1,5 @@
+/* todos os filhos à esquerda tornam-se filhos à direita, e vice-versa */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
